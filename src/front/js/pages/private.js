@@ -3,21 +3,22 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
-export const Home = () => {
+export const Private = () => {
   const { store, actions } = useContext(Context);
   const token = store.token;
   const message = store.message;
-  console.log(token);
+
   useEffect(() => {
     actions.getMessage();
   }, [token]);
 
   return (
     <div className="text-center mt-5">
+      <h1>Sección de contenido oculto</h1>
       {token && token != "" && token != undefined ? (
-        <h1>You are logged in with token: {token}</h1>
+        <h1>Secrets exposed</h1>
       ) : (
-        <h1>Bienvenido, porfavor inicia sesión o registrate</h1>
+        <h1>Aun no estas logeado, inicia para ver el secreto!</h1>
       )}
       {message && message != "" && message != undefined ? (
         <div className="alert alert-info">{message}</div>
